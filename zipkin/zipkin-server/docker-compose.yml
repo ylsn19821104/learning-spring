@@ -1,0 +1,12 @@
+version: '3'
+services:
+  zipkin-server:
+    image: hongxp/zipkin-server
+    restart: always
+    ports:
+      - 9411:9411
+  user-service:
+    image: hongxp/user-service
+    restart: always
+    ports:
+      - 8771:8771
