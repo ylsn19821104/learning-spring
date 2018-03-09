@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration error="true" scan="true" scanPeriod="2 seconds" debug="true">
+
+    <contextName>rear-dubbo-provider</contextName>
+    <!--路径-->
+    <property name="logback.logs.path" value="logs"/>
+    <!--日志模块名-->
+    <property name="logback.logs.module.name" value="default"/>
+
+    <!--console日志显示-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender" target="System.out">
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 所有日志的文件 -->
+    <appender name="console.out" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.logs.path}/console.out.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logback.logs.path}/console.out.log.%d{yyyyMMdd}</FileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+
+    </appender>
+
+    <appender name="debugfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.logs.path}/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logback.logs.path}/debug.log.%d{yyyyMMdd}</FileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="infofile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.logs.path}/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logback.logs.path}/info.log.%d{yyyyMMdd}</FileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="warnfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.logs.path}/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logback.logs.path}/warn.log.%d{yyyyMMdd}</FileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="errorfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.logs.path}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logback.logs.path}/error.log.%d{yyyyMMdd}</FileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- sql的日志 -->
+    <appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logback.logs.path}/sql.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logback.logs.path}/sql.log.%d{yyyyMMdd}</FileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %X{requestId} %logger:%line %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache.zookeeper.ClientCnxn" level="INFO"/>
+    <logger name="org.apache.tomcat.util.net.NioEndpoint" level="INFO"/>
+
+    <!-- sql的日志 -->
+    <logger name="org.springframework.jdbc">
+        <appender-ref ref="sql" />
+    </logger>
+
+
+    <root level="ALL">
+        <!--<appender-ref ref="console"  additivity="false"/>-->
+        <!--<appender-ref ref="console.out"  additivity="false"/>-->
+
+        <!--<appender-ref ref="debugfile" additivity="false"/>-->
+        <appender-ref ref="infofile" additivity="false"/>
+        <appender-ref ref="warnfile" additivity="false"/>
+        <appender-ref ref="errorfile" additivity="false"/>
+    </root>
+
+
+</configuration>
