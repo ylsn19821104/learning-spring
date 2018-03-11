@@ -1,10 +1,10 @@
 package com.hongxp.demo.dubbo.provider.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.hongxp.demo.dubbo.provider.dao.CategoryDao;
 import com.hongxp.demo.dubbo.provider.po.Category;
 import com.hongxp.demo.dubbo.provider.vo.CategorySearchVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category selectCategory(Long id) {
         Category category = new Category();
-        category.setId(id);
+        category.setId(26L);
         return categoryDao.findById(category);
     }
 
