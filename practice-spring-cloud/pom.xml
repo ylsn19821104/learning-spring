@@ -10,6 +10,13 @@
     <modules>
         <module>practice-eureka-server</module>
         <module>practice-eureka-client</module>
+        <module>practice-eureka-consumer</module>
+        <module>eureka-consumer-ribbon</module>
+        <module>eureka-consumer-feign</module>
+        <module>eureka-consumer-ribbon-hystrix</module>
+        <module>hystrix-dashboard</module>
+        <module>turbine</module>
+        <module>zuul-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
