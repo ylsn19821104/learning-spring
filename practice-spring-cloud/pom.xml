@@ -17,6 +17,7 @@
         <module>hystrix-dashboard</module>
         <module>turbine</module>
         <module>zuul-gateway</module>
+        <module>cloud-service-a</module>
     </modules>
     <packaging>pom</packaging>
 

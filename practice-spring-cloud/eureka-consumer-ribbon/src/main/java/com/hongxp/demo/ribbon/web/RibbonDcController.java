@@ -14,8 +14,7 @@ public class RibbonDcController {
 
     @GetMapping("/dc")
     public String dc() {
-        String url = "http://practice-eureka-client/dc";
-        System.err.println(url);
+        String url = "http://service-a/dc";
         return restTemplate.getForObject(url, String.class);
     }
 }
